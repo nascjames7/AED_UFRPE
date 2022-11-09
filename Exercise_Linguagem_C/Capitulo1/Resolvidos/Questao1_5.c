@@ -27,7 +27,7 @@ for (dia = 1; dia <= 31; dia++) {
     printf ("Digite a quantidade de discos vendidas no dia %d: ", dia);
     scanf ("%d", &listaMensalVendas[dia - 1]);
     /**Implementação de condição para requerer um novo valor 
-    *caso o expoente passado seja inválido.
+    *caso a quantidade de vendas seja inválida.
     */
     while (listaMensalVendas[dia] < 0) {
         printf ("O valor deve ser maior ou igual a zero.\n");        
@@ -37,7 +37,7 @@ for (dia = 1; dia <= 31; dia++) {
     //Copia a lista dada como entrada para uma lista que não será alterada.
     listaInalterada[dia - 1] = listaMensalVendas[dia - 1];    
 }
-//Ultilização do algoritmo insertion sort para ordenar os dados.
+//Utilização do algoritmo insertion sort para ordenar os dados.
 for (dia = 1; dia <= 31; dia++) {
     //Atribui a variável chave o valor das vendas em determinado dia.
     chave = listaMensalVendas[dia];
