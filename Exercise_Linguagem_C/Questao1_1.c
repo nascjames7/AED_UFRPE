@@ -17,7 +17,6 @@
 
 int main () 
 {
-
 //Declaração das variáveis.
 int tamanhoLista;
 //Solicitação e leitura do número de elementos da lista.
@@ -33,9 +32,8 @@ while (tamanhoLista < 0) {
 //Declaração do array.
 int lista[tamanhoLista];
 //Implementação do laço para preenchimento da lista de inteiros.
-for (int posicao = 0; posicao < tamanhoLista; posicao++) {
-    
-    printf ("Digite um valor de posicao %d para a lista: ", posicao+1);
+for (int posicao = 0; posicao < tamanhoLista; posicao++) {    
+    printf ("Digite um valor de posicao %d para a lista: ", posicao + 1);
     scanf ("%d", &lista[posicao]);
 }
 //Implementação do laço para impressão dos quadrados da lista de inteiros.
