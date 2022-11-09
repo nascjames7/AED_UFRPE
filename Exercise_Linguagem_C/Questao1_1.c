@@ -23,7 +23,7 @@ int tamanhoLista;
 printf ("Digite o numero de elementos da lista: ");
 scanf ("%d", &tamanhoLista);
 //Implementação de condição para requerer um novo valor caso o número passado seja inválido.
-while (tamanhoLista < 0) {
+while (tamanhoLista <= 0) {
     printf ("O tamanho da lista deve ser maior que zero.\n");
     //Solicitação e leitura do número de elementos da lista.
     printf ("Digite o numero de elementos da lista: ");
