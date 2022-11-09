@@ -19,39 +19,32 @@
 int main () 
 {
 //Declaração das variáveis.
-int listaMensalVendas[5], listaInalterada[5], listaDiasMaiorVenda[5]; 
-int dia, quantidadeVendida, chave, auxiliar, contador;
+int listaMensalVendas[31], listaInalterada[31], listaDiasMaiorVenda[31]; 
+int dia, quantidadeVendida, chave, auxiliar;
+int contador = 0;
 //Solicitação e leitura das vendas diárias através da implementação do laço.
-for (dia = 1; dia <= 5; dia++) {
+for (dia = 1; dia <= 31; dia++) {
     printf ("Digite a quantidade de discos vendidas no dia %d: ", dia);
     scanf ("%d", &listaMensalVendas[dia - 1]);
     /**Implementação de condição para requerer um novo valor 
     *caso o expoente passado seja inválido.
     */
     while (listaMensalVendas[dia] < 0) {
-        printf ("O valor ser maior ou igual a zero.\n");        
+        printf ("O valor deve ser maior ou igual a zero.\n");        
         printf ("Digite a quantidade de discos vendidas no dia %d: ", dia);
         scanf ("%d", &listaMensalVendas[dia]);        
     }
     //Copia a lista dada como entrada para uma lista que não será alterada.
     listaInalterada[dia - 1] = listaMensalVendas[dia - 1];    
 }
-printf ("Lista mensal.\n");
-for (dia = 0; dia <= 4; dia ++) {
-    printf ("Valor %d: %d\n", dia + 1, listaMensalVendas[dia]);
-}
-printf ("Lista inalterada.\n");
-for (dia = 0; dia <= 4; dia ++) {
-    printf ("Valor %d: %d\n", dia + 1, listaInalterada[dia]);
-}
 //Ultilização do algoritmo insertion sort para ordenar os dados.
-for (dia = 1; dia <= 4; dia++) {
+for (dia = 1; dia <= 31; dia++) {
     //Atribui a variável chave o valor das vendas em determinado dia.
     chave = listaMensalVendas[dia];
     //Recebe o valor do dia anterior ao da chave.
     auxiliar = dia - 1;
     //Implementação da condição para permutar os valores.
-    while (auxiliar > 0 && listaMensalVendas[auxiliar] > chave) {
+    while (auxiliar >= 0 && listaMensalVendas[auxiliar] > chave) {
         /**Permuta os valores caso o valor do dia anterior seja superior
         * ao valor do dia que está em análise.
         */
@@ -64,29 +57,22 @@ for (dia = 1; dia <= 4; dia++) {
         listaMensalVendas[auxiliar + 1] = chave;
     }
 }
-printf ("Lista mensal alterada.\n");
-for (dia = 0; dia <= 4; dia ++){
-    printf ("Valor %d: %d\n", dia + 1, listaMensalVendas[dia]);
-}
-printf ("Lista inalterada.\n");
-for (dia = 0; dia <= 4; dia ++){
-    printf ("Valor %d: %d\n", dia + 1, listaInalterada[dia]);
-}
 //Atribuição do maior valor de discos vendidos num único dia.
-quantidadeVendida = listaMensalVendas[5];
-printf ("Quantidade vendida: %d\n", quantidadeVendida);
+quantidadeVendida = listaMensalVendas[30];
+//Declaração do contador do vetor que guarda os dias.
+int i = 0;
 //Implementação do laço para encontrar o dia de maior venda de discos.
-for (dia = 1; dia <= 5; dia++) {
+for (int dia = 1; dia <= 31; dia++) {    
     //Implementação da condição para capturar o dia em análise.
     if (listaInalterada[dia - 1] == quantidadeVendida) {
         //Guarda o(s) dia(s) e que as vendas foram máximas.
-        listaDiasMaiorVenda[dia - 1] = dia;
-        //Imcremento do contador.
+        listaDiasMaiorVenda[i] = dia;
+        //Incremento dos contadores.
         contador++;
+        i = contador;
     }
 }
-printf ("Contador: %d\n", contador);
-//Implementação do laço para ipressão da resposta.
+//Implementação do laço para impressão da resposta.
 if (contador == 1) {
     /**Impressão do dia em que ocorreu o máximo de vendas no mês de março,
     *bem como a quantidade vendida.
@@ -94,21 +80,21 @@ if (contador == 1) {
     printf ("O valor maximo de vendas foi de %d no dia %d", quantidadeVendida, 
     listaDiasMaiorVenda[0]);
 }
-/*else {
+else {
     printf ("O valor maximo de vendas foi de %d nos dias ", quantidadeVendida);
     //Implementação do laço para impressão dos dias de mior venda.
-    for (dia = 1; dia <= contador; dia++) {
+    for (dia = 1; dia <= contador; dia++) {        
         //Implementação da condição para impressão dos dias.
         if (dia < contador) {
-            printf ("%d, ", listaDiasMaiorVenda[dia]);
+            printf ("%d, ", listaDiasMaiorVenda[dia - 1]);
         } else {
             //Implementação da condição para impressão do último dia.
             if (dia == contador) {            
-            printf ("e %d.", listaDiasMaiorVenda[dia]); 
+            printf ("e %d.", listaDiasMaiorVenda[dia - 1]); 
             } 
         }
     }
-}*/
+}
 return 0;
 }
 
