@@ -44,6 +44,7 @@ for (int posicao = 0; posicao < tamanhoLista; posicao++) {
 for (int posicao = 0; posicao < tamanhoLista; posicao++) {
     //Implementação da condição para impressão dos numeros pares.    
     if (numeros[posicao]%2 == 0) {
+        //Chamada recursiva;
         soma += numeros[posicao];
     }                
 }

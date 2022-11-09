@@ -32,6 +32,7 @@ while (number < 0) {
     scanf ("%d", &number);
 }
 auxiliar = number;
+//Implementação das condições para calcular o fatorial.
 if (number == 0) {
     fatorial = 1;
     printf ("O fatorial de %d: %d\n", auxiliar, fatorial);
@@ -43,7 +44,9 @@ if (number == 2 || number == 1) {
     return 0;
 }
 else{
-    for (int i = 1; i <= number; i++) {    
+    //Implementação do laço para calcular fatoria de número maior que 2.
+    for (int i = 1; i <= number; i++) {
+        //Chamada recursiva.    
         fatorial *= i;        
     }
     printf ("O fatorial de %d: %d\n", auxiliar, fatorial);    
