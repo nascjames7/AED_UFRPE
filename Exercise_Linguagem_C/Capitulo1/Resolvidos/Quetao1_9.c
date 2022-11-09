@@ -19,7 +19,7 @@
 int main () 
 {
 //Declaração das variáveis.
-int numberOne, numberTwo, quantidadeMultiplos, contador1, contador2;
+int numberOne, numberTwo, quantidadeMultiplos, chave, auxiliar;
 //Solicitação e leitura do número de múltiplos.
 printf ("Digite o numero de elementos da lista: ");
 scanf ("%d", &quantidadeMultiplos);
@@ -32,8 +32,9 @@ while (quantidadeMultiplos <= 0) {
     printf ("Digite o numero de elementos da lista: ");
     scanf ("%d", &quantidadeMultiplos);
 }
-//Declaração do vetor.
+//Declaração dos vetores.
 int multiplos[2*quantidadeMultiplos];
+int multiplosNumberOne[quantidadeMultiplos], multiplosNumberTwo[quantidadeMultiplos];
 //Solicitação e leitura do primeiro número.
 printf ("Digite o primeiro numero natural: ");
 scanf ("%d", &numberOne);
@@ -55,45 +56,67 @@ scanf ("%d", &numberTwo);
 while (numberTwo <= 0) {
     printf ("O tamanho da lista deve ser maior que zero.\n");
     //Solicitação e leitura do número de elementos da lista.
-    printf ("Digite o segundo número natural: ");
+    printf ("Digite o segundo numero natural: ");
     scanf ("%d", &numberTwo);
 }
-if (quantidadeMultiplos > 0) {
-    //Declaração do primeiro multiplo.
-    multiplos[0] = 0;    
-    //Implementação do laço para guardar os múltiplos.
-    for (int i = 1; i < quantidadeMultiplos; i++) {                
-        //Implementação da condição para preencimento do vetor.
-        if(numberOne == numberTwo) {
-            multiplos[i] = numberOne*i;
-        }
-        else {
-            if (numberOne < numberTwo) {
-                multiplos[i] = numberOne*i;
-                contador1++;
-            }
-            else {
-                multiplos[i] = numberTwo*i;
-                contador2++;
-            }
-        }
-    }
-    if (contador1 != contador2) {
-        if (contador1 > contador2) {
-            for
-        }
-
-
-    }           
-        
-
-    
-
-    }
-
+//Implementação do laço para encontrar os múltiplos do primeiro número.
+for (int i = 0; i < quantidadeMultiplos; i++) {
+    multiplosNumberOne[i] = numberOne*i;
+    printf ("Multiplo de %d: %d\n", numberOne, multiplosNumberOne[i]);
 }
-   
-
-
-
+//Implementação do laço para encontrar os múltiplos do segundo número.
+for (int i = 0; i < quantidadeMultiplos; i++) {
+    multiplosNumberTwo[i] = numberTwo*i;
+    printf ("Multiplo de %d: %d\n", numberTwo, multiplosNumberTwo[i]);
+}
+//Implementação do laço para colocar todos os múltiplos encontrados.
+for (int i = 0; i < (2*quantidadeMultiplos); i++) {
+    if (i < quantidadeMultiplos) {
+    multiplos[i] = multiplosNumberOne[i];
+    }
+    if (i >= quantidadeMultiplos) {
+        multiplos[i] = multiplosNumberTwo[i - quantidadeMultiplos];
+    }
+}
+for (int i = 0; i < (2*quantidadeMultiplos); i++) {
+    printf ("Multiplo: %d\n", multiplos[i]);
+}
+//Utilização do algoritmo insertion sort para ordenar os dados.
+for (int i = 1; i <= (2*quantidadeMultiplos); i++) {
+    //Atribui a variável chave o valor das vendas em determinado dia.
+    chave = multiplos[i];
+    //Recebe o valor do dia anterior ao da chave.
+    auxiliar = i - 1;
+    //Implementação da condição para permutar os valores.
+    while (auxiliar >= 0 && multiplos[auxiliar] > chave) {
+        /**Permuta os valores caso o valor do dia anterior seja superior
+        * ao valor do dia que está em análise.
+        */
+        multiplos[auxiliar + 1] = multiplos[auxiliar];
+        /**Decremento da variável auxiliar para percorrer
+        * a lista comparando os valores e permutando.
+        */
+        auxiliar--;
+        //Atribuição do valor da chave ao dia anterior.
+        multiplos[auxiliar + 1] = chave;
+    }
+}
+for (int i = 0; i < (2*quantidadeMultiplos); i++) {
+    printf ("Multiplo: %d\n", multiplos[i]);
+}
+//Impressão da resposta final.
+for (int i = 1; i < quantidadeMultiplos; i++) {
+    printf ("%d, ", multiplos[0]);
+    if (multiplos[i] == multiplos[i - 1]) {
+        quantidadeMultiplos++;
+    }
+    //Impressão dos múltiplo difererntes do primiro e último inteiros do vetor.
+    if (i > 0 && multiplos[i] != multiplos[i - 1] && i != (quantidadeMultiplos - 1)) {
+        printf ("%d, ", multiplos[i]);
+    }
+    if (i = (quantidadeMultiplos - 1)) {
+        printf ("e %d.", multiplos[i]);
+    }
+}
+return 0;
 }
