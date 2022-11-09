@@ -24,19 +24,28 @@ int dia, quantidadeVendida, chave, auxiliar, contador;
 //Solicitação e leitura das vendas diárias através da implementação do laço.
 for (dia = 1; dia <= 5; dia++) {
     printf ("Digite a quantidade de discos vendidas no dia %d: ", dia);
-    scanf ("%d", &listaMensalVendas[dia]);
+    scanf ("%d", &listaMensalVendas[dia - 1]);
     /**Implementação de condição para requerer um novo valor 
     *caso o expoente passado seja inválido.
     */
     while (listaMensalVendas[dia] < 0) {
         printf ("O valor ser maior ou igual a zero.\n");        
         printf ("Digite a quantidade de discos vendidas no dia %d: ", dia);
-        scanf ("%d", &listaMensalVendas[dia]);
-        listaInalterada[dia] = listaMensalVendas[dia];
-    }    
+        scanf ("%d", &listaMensalVendas[dia]);        
+    }
+    //Copia a lista dada como entrada para uma lista que não será alterada.
+    listaInalterada[dia - 1] = listaMensalVendas[dia - 1];    
+}
+printf ("Lista mensal.\n");
+for (dia = 0; dia <= 4; dia ++) {
+    printf ("Valor %d: %d\n", dia + 1, listaMensalVendas[dia]);
+}
+printf ("Lista inalterada.\n");
+for (dia = 0; dia <= 4; dia ++) {
+    printf ("Valor %d: %d\n", dia + 1, listaInalterada[dia]);
 }
 //Ultilização do algoritmo insertion sort para ordenar os dados.
-for (dia = 2; dia <= 5; dia++) {
+for (dia = 1; dia <= 4; dia++) {
     //Atribui a variável chave o valor das vendas em determinado dia.
     chave = listaMensalVendas[dia];
     //Recebe o valor do dia anterior ao da chave.
@@ -55,19 +64,28 @@ for (dia = 2; dia <= 5; dia++) {
         listaMensalVendas[auxiliar + 1] = chave;
     }
 }
+printf ("Lista mensal alterada.\n");
+for (dia = 0; dia <= 4; dia ++){
+    printf ("Valor %d: %d\n", dia + 1, listaMensalVendas[dia]);
+}
+printf ("Lista inalterada.\n");
+for (dia = 0; dia <= 4; dia ++){
+    printf ("Valor %d: %d\n", dia + 1, listaInalterada[dia]);
+}
 //Atribuição do maior valor de discos vendidos num único dia.
 quantidadeVendida = listaMensalVendas[5];
+printf ("Quantidade vendida: %d\n", quantidadeVendida);
 //Implementação do laço para encontrar o dia de maior venda de discos.
 for (dia = 1; dia <= 5; dia++) {
     //Implementação da condição para capturar o dia em análise.
-    if (listaInalterada[dia] == quantidadeVendida) {
+    if (listaInalterada[dia - 1] == quantidadeVendida) {
         //Guarda o(s) dia(s) e que as vendas foram máximas.
-        listaDiasMaiorVenda[dia] = dia;
+        listaDiasMaiorVenda[dia - 1] = dia;
         //Imcremento do contador.
         contador++;
     }
 }
-printf ("Contador: %d", contador);
+printf ("Contador: %d\n", contador);
 //Implementação do laço para ipressão da resposta.
 if (contador == 1) {
     /**Impressão do dia em que ocorreu o máximo de vendas no mês de março,
