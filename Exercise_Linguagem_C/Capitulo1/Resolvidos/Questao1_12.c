@@ -1,13 +1,14 @@
 /**
-<h1>Questao1_11</h1>
-* Dado um número inteiro positivo, verifica se ele é primo.
+<h1>Questao1_12</h1>
+* Dados dois números inteiros positivos, vdetermina o máximo divisor
+* comum entre eles, usando o algoritmo de euclides.
 * <p>
 * <b>Nota:<b> Leia atentamente a documentação deste programa 
 * para desfrutar dos recursos oferecidos pelo autor.
 * 
 * @author James Anderson
 * @version 1.0
-* @since 09/11/2022
+* @since 10/11/2022
 */
 
 #include <string.h>
@@ -18,27 +19,33 @@
 int main () 
 {
 //Declaração das variáveis.
-int number, contador; 
-printf ("Digite um numero positivo: ");
-scanf ("%d", &number);
-/**Implementação de condição para requerer um novo valor 
-*caso o numero informado seja inválido.
-*/
-while (number <= 0) {
+  int numberOne, numberTwo, maior;
+  //Solicitação e leitura dos números.
+  printf ("Digite o primeiro numero: ");
+  scanf ("%d", &numberOne);
+  /**Implementação de condição para requerer um novo valor 
+  * caso o número passado seja inválido.
+  */
+  while (numberOne <= 0) {
     printf ("O valor deve ser maior que zero.\n");        
-    printf ("Digite um numero positivo: ");
-    scanf ("%d", &number);       
-}
-//Implementação do laço para descobrir se o número é primo.
-for (int i = 1; i <= number; i++) {
-    //Condição de verificação de número primo.
-    if(number%i == 0){
-        contador++;
-    }
-}
-if (contador > 2) {
-    printf ("O numero %d eh primo.", number);
-} else printf ("O numero %d nao eh primo.", number);
-    
-return 0;
+    printf ("Digite o primeiro numero: ");
+    scanf ("%d", &numberOne);        
+  } 
+  printf ("Digite o segundo numero: ");
+  scanf ("%d", &numberTwo);
+  /**Implementação de condição para requerer um novo valor 
+  * caso o número passado seja inválido.
+  */
+  while (numberTwo <= 0) {
+    printf ("O valor deve ser maior que zero.\n");        
+    printf ("Digite o segundo numero: ");
+    scanf ("%d", &numberTwo);        
+  }
+  //Verificação do maior valor entre os números dados.
+  if (numberOne > numberTwo) {
+    maior = numberOne;
+  }else maior = numberTwo;
+  //Declaração dos vetores.
+  int divisores[maior], restos[maior];       
+  return 0;
 }
