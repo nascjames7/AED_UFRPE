@@ -1,6 +1,6 @@
 /**
 <h1>Questao1_14</h1>
-* Calcula o n-ésimo termo da sequencia de Fibonacci a partir da entrada.* 
+* Dado um número natural na base binária, transforma para a base decimal.* 
 * <p>
 * <b>Nota:<b> Leia atentamente a documentação deste programa 
 * para desfrutar dos recursos oferecidos pelo autor.
@@ -29,7 +29,7 @@ int main ()
     printf ("O valor deve ser maior que zero.\n");        
     printf ("Digite o numero: ");
     scanf ("%d", &number);        
-  }
+  }   
   //Declaração do vetor.
   int fibonacci[number];
   //Declaração dos valores iniciais da sequencia.
@@ -49,3 +49,5 @@ int main ()
   }  
   return 0;
 }
+    
+  
