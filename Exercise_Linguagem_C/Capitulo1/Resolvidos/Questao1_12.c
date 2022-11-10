@@ -19,7 +19,7 @@
 int main () 
 {
 //Declaração das variáveis.
-  int numberOne, numberTwo, maior;
+  int numberOne, numberTwo, maior, menor, contador = 0;
   //Solicitação e leitura dos números.
   printf ("Digite o primeiro numero: ");
   scanf ("%d", &numberOne);
@@ -44,8 +44,42 @@ int main ()
   //Verificação do maior valor entre os números dados.
   if (numberOne > numberTwo) {
     maior = numberOne;
-  }else maior = numberTwo;
+    menor = numberTwo;
+  }else {
+    maior = numberTwo;
+    menor = numberOne;
+  }
+  printf ("maior: %d\n", maior);
+  printf ("menor: %d\n", menor);
   //Declaração dos vetores.
-  int divisores[maior], restos[maior];       
+  int divisores[maior], restos[maior];  
+  //Implementação do laço para inicialização dos vetores.
+  for (int i = 0; i < maior; i++) {
+    divisores[i] = 0;
+    restos[i] = 0;
+  } 
+  //Declaração dos 2 primeiros campos do vetor de divisores.
+  divisores[0] = maior;
+  divisores[1] = menor;  
+  //Implementação do laço para preenchimento dos vetores.
+  for (int i = 2; i < maior; i++) {
+    divisores[i] = (maior%menor);
+    restos[i - 2] = divisores[i];//restos[0]
+    contador++; 
+    //Condição de parada.
+    if (divisores[i] == 0) {
+        i = maior;
+    }
+    //Redefinição dos divisor e dividendo.
+    maior = menor;
+    menor = divisores[i];   
+  }
+  //Impressão dos divisores e restos.
+  for (int i = 0; i < (contador - 1); i++) {
+    printf ("divisor %d: %d\n", i, divisores[i]);
+    printf ("resto %d: %d\n", i, restos[i]);
+  }
+  //Impressão do último divisor
+  printf ("O MDC entre %d e %d eh: %d\n", divisores[0], divisores[1], divisores[contador]);
   return 0;
 }
