@@ -18,24 +18,31 @@
 int main () 
 {
 //Declaração das variáveis.
-  int number, binario[30], decimal = 0, contador = 0;
+  int  decimal = 0, numberBinario = 0;
+  char palavraBinaria[30];
   //Solicitação e leitura dos números.
-  do {
-    //Solicitação e leitura dos bits.
+  //Solicitação e leitura dos bits.
     printf ("Digite o numero: ");
-    scanf ("%d", &number);
-    //Implementação de condição para ser guardado no array.
-    if (number == 0 || number == 1) {
-        binario[contador] = number;
-        contador++; 
-    }
-  //Condição de parada.
-  } while (number == 0 || number == 1);     
+    scanf ("%s", palavraBinaria);
+    //Imprime a palavra binária.
+    //puts(palavraBinaria);
+    //Imprime o número de caracteres da palavra.
+    //printf ("%d\n", strlen(palavraBinaria));     
   //Implementação do laço para o cálculo do número decimal.
-  for (int i = 0; i < contador; i++) {
+  for (int i = 0; i < strlen(palavraBinaria); i++) {
     //Chamada recursiva.
-    decimal += binario[contador - i]*pow(i,2);
+    int exp = pow(2, i);
+    //printf ("exp: %d\n", exp);
+    //printf ("palavraBinaria: %d\n", (int)palavraBinaria[i]);
+    //Implementação das condições para transformar o caracter da Tabela ASCII em binário.
+    if ((int)palavraBinaria[i] == 48) {
+      numberBinario = 0;
+    } else if ((int)palavraBinaria[i] == 49) {
+      numberBinario = 1;
+    } 
+    decimal += numberBinario*pow(2, strlen(palavraBinaria) - 1 - i);
+    printf ("decimal: %d\n", decimal);
   }
-  printf ("O numero decimal: %d", decimal);
+  printf ("O numero decimal: %d\n", decimal);
   return 0;
 }
