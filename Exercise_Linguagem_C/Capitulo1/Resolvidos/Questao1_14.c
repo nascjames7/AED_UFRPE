@@ -1,6 +1,6 @@
 /**
 <h1>Questao1_14</h1>
-* Dado um número natural na base binária, transforma para a base decimal.* 
+* Dado um número natural, encontra o termo da sequência de Fibonacci. 
 * <p>
 * <b>Nota:<b> Leia atentamente a documentação deste programa 
 * para desfrutar dos recursos oferecidos pelo autor.
