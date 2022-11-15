@@ -8,7 +8,7 @@
 * 
 * @author James Anderson
 * @version 1.0
-* @since 14/11/2022
+* @since 15/11/2022
 */
 
 #include <string.h>
@@ -19,7 +19,7 @@
 int main () 
 {
     //Declaração das variáveis.
-    int number, termo, contador1 = 1, contador2 = 1, auxiliar, chave;
+    int number, termo, contador = 1, auxiliar, chave;
     int quantidadeSegmentosDiferentes = 0;
     //Solicitaçao e leitura da variável.
     printf ("Digite um numero: ");
@@ -41,21 +41,26 @@ int main ()
     for (int position = 1; position < number; position++) {
         //Implementação das condições para contagem dos segmentos.
         if (serie[position-1] < serie[position]) {
-            contador1++;
-            //segmentos[quantidadeSegmentosDiferentes] = contador1;
-            printf ("quant1: %d\n", contador1);
-        } else {       
-            //contador1 = 1;
-            if (contador1 == 1) {
-                segmentos[quantidadeSegmentosDiferentes] = 1;
-            } else segmentos[quantidadeSegmentosDiferentes] = contador1;            
-            printf ("quant2: %d\n", segmentos[quantidadeSegmentosDiferentes]);            
-            //Incrementa a posição
-            quantidadeSegmentosDiferentes++;        
+            //Incremento do contador.
+            contador++;            
+        } else {
+            //Atribuição do array.
+            segmentos[quantidadeSegmentosDiferentes] = contador;
+            printf ("quant1: %d\n", segmentos[quantidadeSegmentosDiferentes]);
+            if (position != 1) {
+                //Incremento da posição do array.       
+                quantidadeSegmentosDiferentes++;
             }            
-    }
+            //segmentos[quantidadeSegmentosDiferentes] = 1;            
+            printf ("quant2: %d\n", segmentos[quantidadeSegmentosDiferentes]);            
+            //Incrementa a posição do array.
+            quantidadeSegmentosDiferentes++;
+            //Retorna o contador ao valor inicial.
+            contador = 1;        
+            }            
+    }    
     //Utilização do algoritmo insertion sort para ordenar os dados.
-    for (int position = 1; position <= number; position++) {
+    for (int position = 1; position < (4*number); position++) {
         //Atribui a variável chave o valor das vendas em determinado dia.
         chave = segmentos[position];
         //Recebe o valor do dia anterior ao da chave.
@@ -73,7 +78,8 @@ int main ()
             //Atribuição do valor da chave ao dia anterior.
             segmentos[auxiliar + 1] = chave;
         }
-}
+    }
+    //Impressão da resposta final.
     printf ("O maior segmento crescente: %d", segmentos[number - 1]);
     return 0;
 }
