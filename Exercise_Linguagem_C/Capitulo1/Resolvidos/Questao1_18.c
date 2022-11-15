@@ -56,3 +56,4 @@ int main ()
     } else printf ("Os lados nao formam um triangulo retangulo.");
     return 0;
 }
+
