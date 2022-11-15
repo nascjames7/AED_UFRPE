@@ -30,37 +30,49 @@ int main ()
         scanf ("%d", &number);
     } 
     //Declaraçaõ do array.
-    int serie[number], segmentos[number];
+    int serie[number], segmentos[4*number];
     //Implementação do laço para obter a sequenncia.
     for (int position = 0; position < number; position++) {
         printf ("Digite o termo %d da sequencia: ", position + 1);
         scanf ("%d", &termo);
         serie[position] = termo;
-    }    
+    }  
+    //Implementação para preenchimento inicial do vetor com inteiro -1.
+    for (int position = 0; position < (4*number); position++) {
+        segmentos[position] = -1;
+    }  
     //Implementação do laço para contagem e verificação dos segmentos da sequencia.
     for (int position = 1; position < number; position++) {
+        printf ("position: %d\n", position);
+        printf ("serie: %d", serie[position]);
+        //Implementação da condição do último termo.
+        if (position == (number - 1) && (serie[position-1] > serie[position])) {
+            segmentos[quantidadeSegmentosDiferentes] = contador - 1;
+            printf ("quantSegmentos: %d\n", segmentos[quantidadeSegmentosDiferentes]);
+        }          
         //Implementação das condições para contagem dos segmentos.
-        if (serie[position-1] < serie[position]) {
+        if (serie[position-1] <= serie[position]) {            
             //Incremento do contador.
-            contador++;            
-        } else {
+            contador++;
+            printf ("contador: %d\n", contador);
+            printf ("quantidade1: %d\n", quantidadeSegmentosDiferentes);                      
+        }else {
+            printf ("quantidade2a: %d\n", quantidadeSegmentosDiferentes);
+            printf ("contador: %d\n", contador);
             //Atribuição do array.
             segmentos[quantidadeSegmentosDiferentes] = contador;
-            printf ("quant1: %d\n", segmentos[quantidadeSegmentosDiferentes]);
-            if (position != 1) {
-                //Incremento da posição do array.       
-                quantidadeSegmentosDiferentes++;
-            }            
-            //segmentos[quantidadeSegmentosDiferentes] = 1;            
-            printf ("quant2: %d\n", segmentos[quantidadeSegmentosDiferentes]);            
-            //Incrementa a posição do array.
+            printf ("quantSegmentos: %d\n", segmentos[quantidadeSegmentosDiferentes]);            
+            //Incremento da posição do array.       
             quantidadeSegmentosDiferentes++;
+            printf ("quantidade2d: %d\n", quantidadeSegmentosDiferentes);                        
             //Retorna o contador ao valor inicial.
-            contador = 1;        
-            }            
-    }    
+            contador = 1;
+            printf ("contador: %d\n", contador);            
+            }
+    }
+    printf ("quantidade: %d\n", quantidadeSegmentosDiferentes);   
     //Utilização do algoritmo insertion sort para ordenar os dados.
-    for (int position = 1; position < (4*number); position++) {
+    for (int position = 1; position < (number); position++) {
         //Atribui a variável chave o valor das vendas em determinado dia.
         chave = segmentos[position];
         //Recebe o valor do dia anterior ao da chave.
