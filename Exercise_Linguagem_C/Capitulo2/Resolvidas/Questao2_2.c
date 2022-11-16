@@ -1,5 +1,5 @@
 /**
-<h1>Qestao2_2</h1>
+<h1>Questao2_2</h1>
 * Dado um número positivo n, imprimir todos os números inteiros entre 1 e n que são 
 * hipotenusa de dois catetos inteiros.
 * <p>
