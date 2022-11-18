@@ -1,5 +1,5 @@
 /**
-<h1>Questao1_12</h1>
+<h1>Questao2_7</h1>
 * Dados dois números inteiros positivos, vdetermina o máximo divisor
 * comum entre eles, usando o algoritmo de euclides.
 * <p>

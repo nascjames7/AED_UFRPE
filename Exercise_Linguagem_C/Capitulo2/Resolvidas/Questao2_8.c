@@ -51,22 +51,31 @@ int main ()
     else {
         printf ("A sequencia pode ser k-alternance! Vamos verificar!");
         for (int i = 0; i < number; i++) {
-            if (sequencia[0]%2 == 0) {
+            if (sequencia[i]%2 == 0) {
                 contadorPar++;            
             } 
-            if (sequencia[0]%2 == 1) {
+            if (sequencia[i]%2 == 1) {
                 contadorImpar++;
             }
-            if (contadorPar > contadorImpar) {
+            i++;
+            if (contadorPar > contadorImpar) {                
                 if (sequencia[i]%2 == 0) {
                     contadorPar++;
+                } else {                    
+                    if (contadorImpar > contadorPar) {
+                        if (sequencia[i]%2 == 1) {                                                                
+                            contadorImpar++;
+                        }
+                    }
                 }
             }
+        }
+    }
     //Implementação do laço para verifica se a sequência é k-alternance.
-    for (int i = 1; i < number; i++) {
+    /*for (int i = 1; i < number; i++) {
         //Implementação das condições de verificação.
         
-    }   
+    }*/   
         
     return 0;
 }
