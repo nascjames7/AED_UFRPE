@@ -30,21 +30,30 @@ void printArray(int vetor[], int tamanhoOriginal) {
     }
 }
 
+void troca(int vetor, int *j, int *valorMinimo) {
+    int auxiliar = vetor[j];
+    vetor[j] = vetor[valorMinimo];
+    vetor[valorMinimo] = auxiliar;
+}
+
 /* Function to sort an array using insertion sort*/
-void shellSort(int vetor[], int tamanhoOriginal) {
-  //Rearranja elemento em intervalos do tipo: n/2, n/4, n/8....
-  for (int intervalo = tamanhoOriginal/2; intervalo > 0; intervalo /= 2) {
-    for (int i = intervalo; i < tamanhoOriginal; i++) {
-        int auxiliar = vetor[i];
-        int j;
-        for (j = i; j >= intervalo && vetor[j - intervalo] > auxiliar; j-= intervalo) {
-            vetor[j] = vetor[j - intervalo];
+void selectionSort(int vetor[], int tamanhoOriginal) {
+  int i, j, valorMinimo;
+  for (int i = 1; i < tamanhoOriginal; i++) {
+    valorMinimo = i;
+    for (int j = i + 1; j <= tamanhoOriginal; j++) {
+        if (vetor[j] < vetor[valorMinimo]) {
+            valorMinimo = j;
+            int auxiliar1 = &vetor[i];
+            int auxiliar2 = &vetor[valorMinimo];
+            
+            //printf ("Aqui");
+            //troca(vetor, j, valorMinimo);
+            //printf ("Sai");
         }
-        vetor[j] = auxiliar; 
     }
   }
-}
-  
+}  
 
 
 /* Driver program to test insertion sort */
@@ -61,7 +70,7 @@ int main() {
   }
 
   printArray(vetor, tamanhoOriginal);
-  shellSort(vetor, tamanhoOriginal);
+  selectionSort(vetor, tamanhoOriginal);
   printArray(vetor, tamanhoOriginal);
 
   return 0;

@@ -31,7 +31,7 @@ void printArray(int vetor[], int tamanhoOriginal) {
 }
 
 //Ordenação do vetor.
-void bublleSort (int vetor[], int tamanhoOriginal) {
+void bubbleSort (int vetor[], int tamanhoOriginal) {
 
     int tamanho = tamanhoOriginal;   
     //Implementação do laço para percorrer o vetor n vezes (n = tamanho).
@@ -64,7 +64,7 @@ int main ()
   }
 
 printArray(vetor, tamanhoOriginal);
-bublleSort(vetor, tamanhoOriginal);
+bubbleSort(vetor, tamanhoOriginal);
 printArray(vetor, tamanhoOriginal);
 
 return 0;
