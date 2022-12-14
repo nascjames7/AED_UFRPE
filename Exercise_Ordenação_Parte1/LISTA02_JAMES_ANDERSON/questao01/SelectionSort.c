@@ -1,5 +1,5 @@
 /**
-<h1>BublleSort</h1>
+<h1>SelectionSort</h1>
 * Dada uma coleção de números inteiros terminada, ordena-los.
 * <p>
 * <b>Nota:<b> Leia atentamente a documentação deste programa 
@@ -30,28 +30,25 @@ void printArray(int vetor[], int tamanhoOriginal) {
     }
 }
 
-//Ordenação do vetor.
-void bublleSort (int vetor[], int tamanhoOriginal) {
-
-    int tamanho = tamanhoOriginal;   
-    //Implementação do laço para percorrer o vetor n vezes (n = tamanho).
-    for (int i = 0; i < tamanho; i++) {
-        //Implementação do laço para realizar a troca dos valores.
-        for (int j = 0; j < (tamanho - 1); j++) {
-            //Implementação da condição de troca.
-            if (vetor[j] > vetor[j+1]) {
-                int auxiliar = vetor[j];
-                vetor[j] = vetor[j + 1];
-                vetor[j + 1] = auxiliar;
-            }
+/* Function to sort an array using insertion sort*/
+void shellSort(int vetor[], int tamanhoOriginal) {
+  //Rearranja elemento em intervalos do tipo: n/2, n/4, n/8....
+  for (int intervalo = tamanhoOriginal/2; intervalo > 0; intervalo /= 2) {
+    for (int i = intervalo; i < tamanhoOriginal; i++) {
+        int auxiliar = vetor[i];
+        int j;
+        for (j = i; j >= intervalo && vetor[j - intervalo] > auxiliar; j-= intervalo) {
+            vetor[j] = vetor[j - intervalo];
         }
-        //Decremento do tamanho do vetor.
-        tamanho--;
+        vetor[j] = auxiliar; 
     }
+  }
 }
+  
 
-int main () 
-{
+
+/* Driver program to test insertion sort */
+int main() {
   // int vetor[] = { 12, 11, 13, 5, 6 };
   // int tamanho = sizeof(vetor) / sizeof(vetor[0]);
 
@@ -63,9 +60,9 @@ int main ()
     vetor[i] = rand() % 100;
   }
 
-printArray(vetor, tamanhoOriginal);
-bublleSort(vetor, tamanhoOriginal);
-printArray(vetor, tamanhoOriginal);
+  printArray(vetor, tamanhoOriginal);
+  shellSort(vetor, tamanhoOriginal);
+  printArray(vetor, tamanhoOriginal);
 
-return 0;
+  return 0;
 }
