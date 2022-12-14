@@ -49,10 +49,10 @@ for (int i = 0; i < tamanhoOriginal; i++) {
     if(i == 0) {
         printf ("[%d, ", vetor[i]);
     }
-    if(i > 0 && i < (tamanho - 1)) {
+    if(i > 0 && i < (tamanhoOriginal - 1)) {
     printf ("%d, ", vetor[i]);
     }
-    if(i == (tamanho - 1)) {
+    if(i == (tamanhoOriginal - 1)) {
         printf ("%d]", vetor[i]);
     }
 }
