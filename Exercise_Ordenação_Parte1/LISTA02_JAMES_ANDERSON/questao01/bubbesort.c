@@ -1,5 +1,5 @@
 /**
-<h1>Bublesort</h1>
+<h1>BublleSort</h1>
 * Dada uma coleção de números inteiros terminada, ordena-los.
 * <p>
 * <b>Nota:<b> Leia atentamente a documentação deste programa 
@@ -7,7 +7,7 @@
 * 
 * @author James Anderson
 * @version 1.0
-* @since 13/12/2022
+* @since 14/12/2022
 */
 
 #include <string.h>
