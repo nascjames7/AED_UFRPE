@@ -38,57 +38,45 @@ void trocar(int vetor[], int first, int second) {
 }
 
 //Procedimento que realiza a partição.
-int particionar(int vetor[], int tamanhoParticao, int tamanhoOriginal) {
+int particionar(int vetor[], int tamanhoParticao, int tamanhoCorreto) {
     //Define auxiliar como último elemento do vetor.
-    int pivo = vetor[tamanhoOriginal - 1];
-    printf ("vetor[tamanhoOriginal - 1]: %d\n", pivo);
+    int pivo = vetor[tamanhoCorreto];
+    printf ("pivo: %d\n", pivo);
     //Define i como tamanho da partição.
     int i = tamanhoParticao - 1;
-    int j;
-    printf ("tamanhoParticao - 1: %d\n", i);
+    int j;    
     //Implementação do laço para realizar a ordenação.
-    for (j = tamanhoParticao; j < tamanhoOriginal; j++) {
-      printf ("j: %d\n", j);
+    for (j = tamanhoParticao; j <= (tamanhoCorreto - 1); j++) {      
       //Implementação da condição para realizar a troca.
-        if (vetor[j] < pivo) {
-            //Incremento de i.
-            printf ("i: %d\n", i);
-            i++;
-            printf ("i: %d\n", i);
-            printf ("Antes: \nvetor[i]: %d\n", vetor[i]);
-            printf ("j: %d\n", j);
-            printf ("vetor[j]: %d\n", vetor[j]);
+        if (vetor[j] < pivo) {            
+            i++;            
             trocar (vetor, i, j);
-            printf ("Depois: \nvetor[i]: %d\n", vetor[i]);
+            printf ("vetor[i]: %d\n", vetor[i]);
             printf ("vetor[j]: %d\n", vetor[j]);
+            printArray(vetor, tamanhoCorreto);
         }
-    }
-    printf ("i: %d\n", i);
-    printf ("Antes: \nvetor[i + 1]: %d\n", vetor[i]);
-    printf ("j: %d\n", j);
-    printf ("vetor[j]: %d\n", vetor[tamanhoOriginal]);
-    trocar (vetor, (i + 1), tamanhoOriginal);
-    printf ("i: %d\n", i);
-    printf ("Depois: \nvetor[i + 1]: %d\n", vetor[i]);
-    printf ("j: %d\n", j);
-    printf ("vetor[j]: %d\n", vetor[tamanhoOriginal]);
+    }    
+    trocar (vetor, (i + 1), tamanhoCorreto);        
+    printf ("vetor[i + 1]: %d\n", vetor[i]);    
+    printf ("vetor[j]: %d\n", vetor[tamanhoCorreto]);
+    printArray(vetor, tamanhoCorreto);
     printf ("retorno: %d\n", i + 1);
     return (i + 1);
 }
 
 /* Function to sort an array using quicksort*/
 void quickSort(int vetor[], int tamanhoParticao, int tamanhoOriginal) {
-  printf ("tamanhoParticao: %d\n", tamanhoParticao);
-  printf ("tamanhoOriginal: %d\n", tamanhoOriginal);
-  if (tamanhoParticao < tamanhoOriginal) {    
+  //printf ("tamanhoParticao: %d\n", tamanhoParticao);
+  //printf ("tamanhoOriginal: %d\n", tamanhoOriginal);
+  int tamanhoCorreto = tamanhoOriginal - 1;
+  if (tamanhoParticao < tamanhoCorreto) {    
     //Declaração da variavel quick (representa o retorno da função particionar).
-    int quick = particionar(vetor, tamanhoParticao, tamanhoOriginal);
+    int quick = particionar(vetor, tamanhoParticao, tamanhoCorreto);
     printf ("quick: %d\n", quick);
-    //Chamada recursiva do procedimento quickSort.
-    printf ("Chamada recursiva para elementos antes do pivo.\n");
-    quickSort(vetor, tamanhoParticao, (quick - 1));
-    printf ("Chamada recursiva para elementos depois do pivo.\n");
-    quickSort(vetor, (quick + 1), tamanhoOriginal);
+    printArray(vetor, tamanhoCorreto);
+    //Chamada recursiva do procedimento quickSort.    
+    quickSort(vetor, tamanhoParticao, (quick - 1));    
+    quickSort(vetor, (quick + 1), tamanhoCorreto);
   }
 }  
 
@@ -100,7 +88,7 @@ int main() {
   //int quickInit = tamanhoOriginal/2;
   int quickInit = 0;
   //int quickInit = tamanhoOriginal - 1;
-  printf ("quickInit: %d\n", quickInit);
+  //printf ("quickInit: %d\n", quickInit);
 
   /*int tamanhoOriginal;
   printf("Enter the size of array: ");
@@ -113,7 +101,7 @@ int main() {
   }*/
 
   printArray(vetor, tamanhoOriginal);
-  quickSort(vetor, quickInit, (tamanhoOriginal - 1));
+  quickSort(vetor, quickInit, tamanhoOriginal);
   printArray(vetor, tamanhoOriginal);
 
   return 0;
