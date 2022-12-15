@@ -59,11 +59,12 @@ int particionar(int vetor[], int tamanhoParticao, int tamanhoOriginal) {
             printArray(vetor, tamanhoOriginal);
         }
     }    
-    trocar (vetor, (i + 1), tamanhoCorreto);        
-    printf ("vetor[i + 1]: %d\n", vetor[i]);    
-    printf ("vetor[j]: %d\n", vetor[tamanhoCorreto]);
-    printArray(vetor, tamanhoCorreto + 1);
-    printf ("retorno: %d\n", i + 1);
+    trocar (vetor, (i + 1), tamanhoCorreto);
+    printf ("i + 1: %d\n", i + 1);
+    printf ("tamanhoCorreto: %d\n", tamanhoCorreto);        
+    printf ("vetor[i + 1]: %d\n", vetor[i + 1]);    
+    printf ("vetor[tamanhoCorreto]: %d\n", vetor[tamanhoCorreto]);
+    printArray(vetor, tamanhoOriginal);    
     return (i + 1);
 }
 
@@ -81,15 +82,14 @@ void quickSort(int vetor[], int tamanhoParticao, int tamanhoOriginal) {
 }  
 
 /* Driver program to test insertion sort */
-int main() {
+int main() 
+{
   int vetor[] = {2, 8, 7, 1, 3, 5, 6, 4};
   int tamanhoOriginal = 8; //sizeof(vetor); sizeof(vetor[0]);
-  printf ("Tam: %d\n", tamanhoOriginal);
-  //int quickInit = tamanhoOriginal/2;
-  int quickInit = 0;
+  
+  //int quickInit = tamanhoOriginal/2;  
   //int quickInit = tamanhoOriginal - 1;
   //printf ("quickInit: %d\n", quickInit);
-
   /*int tamanhoOriginal;
   printf("Enter the size of array: ");
   scanf("%d", &tamanhoOriginal);
@@ -100,6 +100,8 @@ int main() {
     vetor[i] = rand() % 100;
   }*/
 
+  printf ("Tam: %d\n", tamanhoOriginal);
+  int quickInit = 0;
   printArray(vetor, tamanhoOriginal);
   quickSort(vetor, quickInit, tamanhoOriginal);
   printArray(vetor, tamanhoOriginal);
