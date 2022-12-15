@@ -38,16 +38,16 @@ void trocar(int vetor[], int first, int second) {
 }
 
 //Procedimento que realiza a partição.
-int particionar(int vetor[], int tamanhoParticao, int tamanhoOriginal) {
+int particionar(int vetor[], int quickInit, int tamanhoOriginal) {
     //Define auxiliar como último elemento do vetor.
     int tamanhoCorreto = tamanhoOriginal - 1;
     int pivo = vetor[tamanhoCorreto];
     printf ("pivo: %d\n", pivo);
     //Define i como tamanho da partição.
-    int i = tamanhoParticao - 1;
+    int i = quickInit - 1;
     int j;    
     //Implementação do laço para realizar a ordenação.
-    for (j = tamanhoParticao; j <= (tamanhoCorreto - 1); j++) {      
+    for (j = quickInit; j <= (tamanhoCorreto - 1); j++) {      
       //Implementação da condição para realizar a troca.
         if (vetor[j] < pivo) {            
             i++;            
@@ -69,14 +69,14 @@ int particionar(int vetor[], int tamanhoParticao, int tamanhoOriginal) {
 }
 
 /* Function to sort an array using quicksort*/
-void quickSort(int vetor[], int tamanhoParticao, int tamanhoOriginal) {  
-  if (tamanhoParticao < tamanhoOriginal) {    
+void quickSort(int vetor[], int quickInit, int tamanhoOriginal) {  
+  if (quickInit < tamanhoOriginal) {    
     //Declaração da variavel quick (representa o retorno da função particionar).
-    int quick = particionar(vetor, tamanhoParticao, tamanhoOriginal);
+    int quick = particionar(vetor, quickInit, tamanhoOriginal);
     printf ("quick: %d\n", quick);
     printArray(vetor, tamanhoOriginal);
     //Chamada recursiva do procedimento quickSort.    
-    quickSort(vetor, tamanhoParticao, (quick - 1));    
+    quickSort(vetor, quickInit, quick);    
     quickSort(vetor, (quick + 1), tamanhoOriginal);
   }
 }  
@@ -86,7 +86,7 @@ int main()
 {
   int vetor[] = {2, 8, 7, 1, 3, 5, 6, 4};
   int tamanhoOriginal = 8; //sizeof(vetor); sizeof(vetor[0]);
-  
+  int quickInit = 0;  
   //int quickInit = tamanhoOriginal/2;  
   //int quickInit = tamanhoOriginal - 1;
   //printf ("quickInit: %d\n", quickInit);
@@ -100,8 +100,7 @@ int main()
     vetor[i] = rand() % 100;
   }*/
 
-  printf ("Tam: %d\n", tamanhoOriginal);
-  int quickInit = 0;
+  printf ("Tam: %d\n", tamanhoOriginal);  
   printArray(vetor, tamanhoOriginal);
   quickSort(vetor, quickInit, tamanhoOriginal);
   printArray(vetor, tamanhoOriginal);
