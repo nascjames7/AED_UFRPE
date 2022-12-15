@@ -38,8 +38,9 @@ void trocar(int vetor[], int first, int second) {
 }
 
 //Procedimento que realiza a partição.
-int particionar(int vetor[], int tamanhoParticao, int tamanhoCorreto) {
+int particionar(int vetor[], int tamanhoParticao, int tamanhoOriginal) {
     //Define auxiliar como último elemento do vetor.
+    int tamanhoCorreto = tamanhoOriginal - 1;
     int pivo = vetor[tamanhoCorreto];
     printf ("pivo: %d\n", pivo);
     //Define i como tamanho da partição.
@@ -51,32 +52,31 @@ int particionar(int vetor[], int tamanhoParticao, int tamanhoCorreto) {
         if (vetor[j] < pivo) {            
             i++;            
             trocar (vetor, i, j);
+            printf ("i: %d\n", i);
+            printf ("j: %d\n", j);
             printf ("vetor[i]: %d\n", vetor[i]);
             printf ("vetor[j]: %d\n", vetor[j]);
-            printArray(vetor, tamanhoCorreto);
+            printArray(vetor, tamanhoOriginal);
         }
     }    
     trocar (vetor, (i + 1), tamanhoCorreto);        
     printf ("vetor[i + 1]: %d\n", vetor[i]);    
     printf ("vetor[j]: %d\n", vetor[tamanhoCorreto]);
-    printArray(vetor, tamanhoCorreto);
+    printArray(vetor, tamanhoCorreto + 1);
     printf ("retorno: %d\n", i + 1);
     return (i + 1);
 }
 
 /* Function to sort an array using quicksort*/
-void quickSort(int vetor[], int tamanhoParticao, int tamanhoOriginal) {
-  //printf ("tamanhoParticao: %d\n", tamanhoParticao);
-  //printf ("tamanhoOriginal: %d\n", tamanhoOriginal);
-  int tamanhoCorreto = tamanhoOriginal - 1;
-  if (tamanhoParticao < tamanhoCorreto) {    
+void quickSort(int vetor[], int tamanhoParticao, int tamanhoOriginal) {  
+  if (tamanhoParticao < tamanhoOriginal) {    
     //Declaração da variavel quick (representa o retorno da função particionar).
-    int quick = particionar(vetor, tamanhoParticao, tamanhoCorreto);
+    int quick = particionar(vetor, tamanhoParticao, tamanhoOriginal);
     printf ("quick: %d\n", quick);
-    printArray(vetor, tamanhoCorreto);
+    printArray(vetor, tamanhoOriginal);
     //Chamada recursiva do procedimento quickSort.    
     quickSort(vetor, tamanhoParticao, (quick - 1));    
-    quickSort(vetor, (quick + 1), tamanhoCorreto);
+    quickSort(vetor, (quick + 1), tamanhoOriginal);
   }
 }  
 
