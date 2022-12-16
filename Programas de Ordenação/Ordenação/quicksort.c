@@ -87,6 +87,7 @@ int main()
   //int vetor[] = {2, 8, 7, 1, 3, 5, 6, 4};
   //int tamanhoOriginal = 8; //sizeof(vetor); sizeof(vetor[0]);
   int vetor[] = {33, 44, 55, 77, 95, 99, 22, 25, 41, 66, 88, 89};
+  //int vetor[] = {1, 4, 6, 2, 7, 5, 8, 3};
   int tamanhoOriginal = 12; //sizeof(vetor); sizeof(vetor[0]);
   int quickInit = 0;  
   //int quickInit = tamanhoOriginal/2;  

@@ -7,7 +7,7 @@
 * 
 * @author James Anderson
 * @version 1.0
-* @since 15/12/2022
+* @since 16/12/2022
 */
 
 #include <string.h>
@@ -42,7 +42,7 @@ int particionar(int vetor[], int quickInit, int tamanhoOriginal) {
     //Define auxiliar como último elemento do vetor.
     int contadorLinha4 = 0;
     int tamanhoCorreto = tamanhoOriginal - 1;
-    int pivo = vetor[tamanhoCorreto];
+    int pivo = vetor[0];
     printf ("pivo: %d\n", pivo);
     //Define i como tamanho da partição.
     int i = quickInit - 1;
