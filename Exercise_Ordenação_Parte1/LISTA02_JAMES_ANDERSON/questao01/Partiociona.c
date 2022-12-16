@@ -40,6 +40,7 @@ void trocar(int vetor[], int first, int second) {
 //Procedimento que realiza a partição.
 int particionar(int vetor[], int quickInit, int tamanhoOriginal) {
     //Define auxiliar como último elemento do vetor.
+    int contadorLinha4 = 0;
     int tamanhoCorreto = tamanhoOriginal - 1;
     int pivo = vetor[tamanhoCorreto];
     printf ("pivo: %d\n", pivo);
@@ -48,6 +49,7 @@ int particionar(int vetor[], int quickInit, int tamanhoOriginal) {
     int j;    
     //Implementação do laço para realizar a ordenação.
     for (j = quickInit; j <= (tamanhoCorreto - 1); j++) {
+      contadorLinha4++;
       printf ("jant: %d\n", j);     
       //Implementação da condição para realizar a troca.
         if (vetor[j] < pivo) {            
@@ -66,7 +68,8 @@ int particionar(int vetor[], int quickInit, int tamanhoOriginal) {
     printf ("vetor[i + 1]: %d\n", vetor[i + 1]);    
     printf ("vetor[tamanhoCorreto]: %d\n", vetor[tamanhoCorreto]);
     //printArray(vetor, tamanhoOriginal); 
-    printf ("retorno: %d", i + 1);   
+    printf ("retorno: %d\n", i + 1); 
+    printf ("contadorLinha4: %d\n", contadorLinha4);  
     return (i + 1);
 }
 
@@ -75,7 +78,9 @@ int particionar(int vetor[], int quickInit, int tamanhoOriginal) {
 /* Driver program to test insertion sort */
 int main() 
 {
-  int vetor[] = {33, 44, 55, 77, 95, 99, 22, 25, 41, 66, 88, 89};
+  //int vetor[] = {33, 44, 55, 77, 95, 99, 22, 25, 41, 66, 88, 89};
+  //int vetor[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+  int vetor[] = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
   int tamanhoOriginal = 12; 
   int quickInit = 0;
   printf ("Tam: %d\n", tamanhoOriginal);  
