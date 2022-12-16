@@ -31,28 +31,27 @@ void printArray(int vetor[], int tamanhoOriginal) {
 }
 
 /* Function to sort an array using insertion sort*/
-void insertionSort(int vetor[], int tamanhoOriginal) {
-  int contador = 0;
-  int i, key, j;
-  for (i = 1; i < tamanhoOriginal; i++) {
-    contador++;
-    key = vetor[i];
-    j = i - 1;
+void insertionSort(int vetor[], int i, int tamanhoOriginal) {  
+  int key, j;
+  key = vetor[i];
+  j = i - 1;  
 
     /* Move elements of vetor[0..i-1], that are
       greater than key, to one position ahead
       of their current position */
-    while (j >= 0 && vetor[j] > key) {
-        contador++;
+  while (j >= 0 && vetor[j] > key) {       
       //Troca das posições (j + 1 = i).
       vetor[j + 1] = vetor[j];
       //Decremento de j.
       j = j - 1;
     }
-    vetor[j + 1] = key;
-  }
-  printf ("contador: %d", contador);
+  vetor[j + 1] = key;
+  if ((i + 1)  <= tamanhoOriginal) {
+    insertionSort (vetor, (i + 1), tamanhoOriginal);
+  } 
+  
 }
+
 
 /* Driver program to test insertion sort */
 int main() {
@@ -69,7 +68,7 @@ int main() {
   }*/
 
   printArray(vetor, tamanhoOriginal);
-  insertionSort(vetor, tamanhoOriginal);
+  insertionSort(vetor, 1, tamanhoOriginal);
   printArray(vetor, tamanhoOriginal);  
 
   return 0;
