@@ -47,7 +47,8 @@ int particionar(int vetor[], int quickInit, int tamanhoOriginal) {
     int i = quickInit - 1;
     int j;    
     //Implementação do laço para realizar a ordenação.
-    for (j = quickInit; j <= (tamanhoCorreto - 1); j++) {      
+    for (j = quickInit; j <= (tamanhoCorreto - 1); j++) {
+      printf ("jant: %d\n", j);     
       //Implementação da condição para realizar a troca.
         if (vetor[j] < pivo) {            
             i++;            
