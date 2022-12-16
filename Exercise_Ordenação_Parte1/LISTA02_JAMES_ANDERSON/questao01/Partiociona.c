@@ -69,41 +69,16 @@ int particionar(int vetor[], int quickInit, int tamanhoOriginal) {
     return (i + 1);
 }
 
-/* Function to sort an array using quicksort*/
-void quickSort(int vetor[], int quickInit, int tamanhoOriginal) {  
-  if (quickInit < tamanhoOriginal) {    
-    //Declaração da variavel quick (representa o retorno da função particionar).
-    int quick = particionar(vetor, quickInit, tamanhoOriginal);
-    printf ("quick: %d\n", quick);
-    printArray(vetor, tamanhoOriginal);
-    //Chamada recursiva do procedimento quickSort.    
-    quickSort(vetor, quickInit, quick);    
-    quickSort(vetor, (quick + 1), tamanhoOriginal);
-  }
-}  
+  
 
 /* Driver program to test insertion sort */
 int main() 
 {
   int vetor[] = {33, 44, 55, 77, 95, 99, 22, 25, 41, 66, 88, 89};
-  int tamanhoOriginal = 12; //sizeof(vetor); sizeof(vetor[0]);
-  int quickInit = 0;  
-  //int quickInit = tamanhoOriginal/2;  
-  //int quickInit = tamanhoOriginal - 1;
-  //printf ("quickInit: %d\n", quickInit);
-  /*int tamanhoOriginal;
-  printf("Enter the size of array: ");
-  scanf("%d", &tamanhoOriginal);
-  int quickInit = tamanhoOriginal/2;
-  printf ("quickInit: %d\n", quickInit);
-  int vetor[tamanhoOriginal];
-  for (int i = 0; i < tamanhoOriginal; i++) {
-    vetor[i] = rand() % 100;
-  }*/
-
+  int tamanhoOriginal = 12; 
+  int quickInit = 0;
   printf ("Tam: %d\n", tamanhoOriginal);  
-  printArray(vetor, tamanhoOriginal);
-  //quickSort(vetor, quickInit, tamanhoOriginal);
+  printArray(vetor, tamanhoOriginal);  
   particionar(vetor, quickInit, tamanhoOriginal);
   printArray(vetor, tamanhoOriginal);
 
