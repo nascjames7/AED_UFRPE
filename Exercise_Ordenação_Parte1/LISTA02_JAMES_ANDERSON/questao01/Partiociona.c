@@ -64,7 +64,7 @@ int particionar(int vetor[], int quickInit, int tamanhoOriginal) {
     printf ("tamanhoCorreto: %d\n", tamanhoCorreto);        
     printf ("vetor[i + 1]: %d\n", vetor[i + 1]);    
     printf ("vetor[tamanhoCorreto]: %d\n", vetor[tamanhoCorreto]);
-    printArray(vetor, tamanhoOriginal); 
+    //printArray(vetor, tamanhoOriginal); 
     printf ("retorno: %d", i + 1);   
     return (i + 1);
 }
